@@ -4,6 +4,7 @@
   --main-bg: #1c1c1c;
   --content-bg: #242424;
   --accent: #74c4ba;
+  --accent-hover: #63a79f;
   --gray: #878787;
   --red: #ff3509;
   --white: #ffffff;
@@ -16,6 +17,8 @@ body {
   background-color: var(--main-bg);
 }
 
+/* ======================= */
+/* NAVBAR */
 .navbar {
   width: 95%;
   min-height: 70px;
@@ -43,4 +46,66 @@ body {
 .line {
   height: 1px;
   background-color: var(--gray);
+}
+
+/* ======================= */
+/* Input section */
+.form {
+  width: 60%;
+  min-height: 80px;
+  background-color: var(--content-bg);
+  margin: 50px auto;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input[type="text"],
+input[type="number"] {
+  background-color: var(--main-bg);
+  border: none;
+  min-height: 20px;
+  padding: 10px;
+  color: var(--white);
+}
+
+input[type="text"]:focus-visible,
+input[type="number"]:focus-visible {
+  outline: none;
+  border: 1px solid var(--accent);
+}
+
+input[type="number"] {
+  width: 100px;
+}
+
+.inputs {
+  display: flex;
+  gap: 30px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-name {
+  text-transform: uppercase;
+  color: var(--white);
+  font-size: 0.9rem;
+}
+
+#submit-btn {
+  padding: 10px 20px;
+  background-color: var(--accent);
+  border: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--white);
+}
+
+#submit-btn:hover {
+  cursor: pointer;
+  background-color: var(--accent-hover);
 }

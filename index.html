@@ -20,6 +20,23 @@
       <p class="date">2022/09/01</p>
     </nav>
     <div class="line"></div>
+    <form class="form">
+      <fieldset class="inputs">
+        <input type="text" name="name" placeholder="John Doe" />
+        <input type="number" name="number" id="amount" placeholder="Amount" />
+      </fieldset>
+      <fieldset class="options">
+        <fieldset class="option">
+          <input type="radio" name="option" id="loans" />
+          <label class="option-name" for="loans">Loans</label>
+        </fieldset>
+        <fieldset class="option">
+          <input type="radio" name="option" id="bought" />
+          <label class="option-name" for="loans">Bought</label>
+        </fieldset>
+      </fieldset>
+      <button id="submit-btn">Submit</button>
+    </form>
     <script src="./js/script.js"></script>
   </body>
 </html>
