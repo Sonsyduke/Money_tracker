@@ -1,1 +1,46 @@
+/* ======================= */
 /* CSS VARIABLES */
+:root {
+  --main-bg: #1c1c1c;
+  --content-bg: #242424;
+  --accent: #74c4ba;
+  --gray: #878787;
+  --red: #ff3509;
+  --white: #ffffff;
+}
+
+/* ======================= */
+/* GENERAL CSS */
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--main-bg);
+}
+
+.navbar {
+  width: 95%;
+  min-height: 70px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.date {
+  color: var(--gray);
+}
+
+.line {
+  height: 1px;
+  background-color: var(--gray);
+}
