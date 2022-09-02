@@ -156,11 +156,18 @@ input[type="number"] {
   color: var(--gray);
 }
 
-.buttons i {
+.buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.checkmark,
+.remove {
   font-size: 1.3rem;
 }
 
-.buttons i:hover {
+.checkmark:hover,
+.remove:hover {
   cursor: pointer;
 }
 
