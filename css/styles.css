@@ -109,3 +109,73 @@ input[type="number"] {
   cursor: pointer;
   background-color: var(--accent-hover);
 }
+
+/* ======================= */
+/* Income section */
+
+.main-section {
+  width: calc(60% + 60px);
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.column {
+  width: 50%;
+  min-height: 300px;
+  background-color: var(--content-bg);
+  padding: 30px;
+  position: relative;
+}
+
+.column-heading {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: var(--white);
+  border-bottom: 1px solid var(--gray);
+  padding-bottom: 20px;
+}
+
+.person {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  color: var(--gray);
+}
+
+.person-info {
+  display: flex;
+  gap: 40px;
+}
+
+.amount {
+  color: var(--gray);
+}
+
+.buttons i {
+  font-size: 1.3rem;
+}
+
+.buttons i:hover {
+  cursor: pointer;
+}
+
+.checkmark {
+  color: var(--accent);
+}
+
+.remove {
+  color: var(--red);
+}
+
+.outstanding {
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+  gap: 80px;
+  color: var(--white);
+}
