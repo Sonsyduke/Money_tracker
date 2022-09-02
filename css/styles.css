@@ -175,7 +175,47 @@ input[type="number"] {
 .outstanding {
   position: absolute;
   bottom: 30px;
+  width: 80%;
   display: flex;
-  gap: 80px;
+  justify-content: space-between;
   color: var(--white);
+}
+
+@media (max-width: 1000px) {
+  .form {
+    width: 80%;
+  }
+
+  .main-section {
+    width: calc(80% + 60px);
+  }
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    width: 95%;
+  }
+
+  .form {
+    width: 90%;
+  }
+
+  .main-section {
+    flex-direction: column;
+  }
+
+  .column {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .form {
+    width: 80%;
+    padding: 30px 0;
+    gap: 30px;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }
