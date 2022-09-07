@@ -56,7 +56,8 @@ function addPerson(person) {
     personContainer.append(personInfo);
 
     const personAmount = document.createElement("p");
-    personAmount.textContent = `R${person.number}.00`;
+    // personAmount.textContent = `R${person.number}.00`;
+    personAmount.textContent = `R${loanMultiplier(person.number)}.00`;
     personAmount.classList.add("amount");
     personInfo.append(personAmount);
 
@@ -80,6 +81,8 @@ function addPerson(person) {
       "remove"
     );
     buttons.append(remove);
+
+    // if it's here add 0.50% to their current amount
   } else if (person.option === "items") {
     const personContainer = document.createElement("div");
     personContainer.classList.add("person");
@@ -120,4 +123,9 @@ function addPerson(person) {
     );
     buttons.append(remove);
   }
+}
+
+function loanMultiplier(amount) {
+  const totalAmount = amount * 1.5;
+  return totalAmount;
 }
