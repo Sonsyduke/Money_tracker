@@ -141,6 +141,7 @@ input[type="number"] {
   margin: 20px 0;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .name {
@@ -177,6 +178,17 @@ input[type="number"] {
 
 .remove {
   color: var(--red);
+}
+
+.complete::after {
+  position: absolute;
+  left: 0;
+  top: 40%;
+  height: 1px;
+  background: var(--white);
+  content: "";
+  width: 100%;
+  display: block;
 }
 
 .outstanding {

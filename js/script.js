@@ -6,8 +6,9 @@ const radioOptions = document.querySelectorAll("input[name='option']");
 const submitBtn = document.querySelector("#submit-btn");
 const personName = document.querySelector(".name");
 const personAmount = document.querySelector(".amount");
-const loansContainer = document.querySelector(".loans"); //CHANGE THIS BACK TO "ALL"
-const itemsContainer = document.querySelector(".items"); //CHANGE THIS BACK TO "ALL"
+const loansContainer = document.querySelector(".loans");
+const itemsContainer = document.querySelector(".items");
+const columnPerson = document.querySelector(".column");
 
 // Get the current date and display it in the nav
 const today = new Date();
@@ -27,6 +28,25 @@ function submittingForm(e) {
   console.log(formDataObj);
   addPerson(formDataObj);
 }
+
+loansContainer.addEventListener("click", function (e) {
+  const item = e.target;
+  if (item.classList[3] === "remove") {
+    const buttons = item.parentElement;
+    const personInfo = buttons.parentElement;
+    const personContainer = personInfo.parentElement;
+    personContainer.remove();
+  }
+});
+itemsContainer.addEventListener("click", function (e) {
+  const item = e.target;
+  if (item.classList[3] === "remove") {
+    const buttons = item.parentElement;
+    const personInfo = buttons.parentElement;
+    const personContainer = personInfo.parentElement;
+    personContainer.remove();
+  }
+});
 
 function addPerson(person) {
   if (person.option === "loans") {
@@ -119,5 +139,4 @@ function loanMultiplier(amount) {
 
 // function totalAmountToCollect(person) {
 //   let newAmount = person;
-
 // }
