@@ -27,6 +27,10 @@ function submittingForm(e) {
   const formDataObj = Object.fromEntries(formData.entries());
   console.log(formDataObj);
   addPerson(formDataObj);
+  nameInput.value = "";
+  amountInput.value = "";
+  radioOptions[0].checked = false;
+  radioOptions[1].checked = false;
 }
 
 loansContainer.addEventListener("click", function (e) {
