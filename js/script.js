@@ -31,22 +31,36 @@ function submittingForm(e) {
 
 loansContainer.addEventListener("click", function (e) {
   const item = e.target;
-  if (item.classList[3] === "remove") {
-    const buttons = item.parentElement;
-    const personInfo = buttons.parentElement;
-    const personContainer = personInfo.parentElement;
-    personContainer.remove();
-  }
+  // DELETE PERSON
+  deletePerson(item);
+  // COMPLETE
+  completePerson(item);
 });
 itemsContainer.addEventListener("click", function (e) {
   const item = e.target;
+  // DELETE PERSON
+  deletePerson(item);
+  // COMPLETE
+  completePerson(item);
+});
+
+function deletePerson(item) {
   if (item.classList[3] === "remove") {
     const buttons = item.parentElement;
     const personInfo = buttons.parentElement;
     const personContainer = personInfo.parentElement;
     personContainer.remove();
   }
-});
+}
+
+function completePerson(item) {
+  if (item.classList[3] === "checkmark") {
+    const buttons = item.parentElement;
+    const personInfo = buttons.parentElement;
+    const personContainer = personInfo.parentElement;
+    personContainer.classList.toggle("complete");
+  }
+}
 
 function addPerson(person) {
   if (person.option === "loans") {
