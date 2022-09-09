@@ -12,6 +12,9 @@ const columnPerson = document.querySelector(".column");
 const totalAmountForLoans = document.querySelector(".amountLoans");
 const totalAmountForItems = document.querySelector(".amountItems");
 
+let loanNumbers = [];
+const itemNumbers = [];
+
 // Get the current date and display it in the nav
 const today = new Date();
 const currentDate = `${today.getFullYear()}/${
@@ -64,11 +67,43 @@ function completePerson(item) {
     const personInfo = buttons.parentElement;
     const personContainer = personInfo.parentElement;
     personContainer.classList.toggle("complete");
+    if (personContainer.classList.contains("complete")) {
+      let amount = personInfo.childNodes[0].textContent;
+      amount = Number(amount.substring(1, amount.indexOf(".")));
+      console.log(amount);
+      console.log(loanNumbers.indexOf(amount));
+      console.log(loanNumbers);
+      let amountIndex = loanNumbers.indexOf(amount);
+      loanNumbers.splice(amountIndex, 1);
+      console.log(loanNumbers);
+
+      // Get the total amount
+      // Convert to number
+      // Subtract
+      let totalAmount = totalAmountForLoans.textContent;
+      totalAmount = Number(totalAmount.substring(1, totalAmount.indexOf(".")));
+
+      if (totalAmount > 0) {
+        totalAmountForLoans.textContent = `R${removeFromTotal(
+          totalAmount,
+          amount
+        )}`;
+      } else {
+        totalAmountForLoans.textContent = `R0.00`;
+      }
+    } else {
+      console.log("No it does not");
+    }
   }
 }
-
-const loanNumbers = [];
-const itemNumbers = [];
+// Check if class contains complete
+// If class contains complete
+// // Check for the amount
+// // // Get the index of the amount from the array it is in
+// // // Remove element from the array
+// // // Update the total amount
+// If it is toggled back on
+// // Add the amount back into the array and the total amount
 
 function addPerson(person) {
   if (person.option === "loans") {
@@ -115,7 +150,6 @@ function addPerson(person) {
       Number(loanMultiplier(person.number))
     );
     totalAmountForLoans.textContent = `R${totalNumber.toFixed(2)}`;
-    console.log(totalNumber);
   } else if (person.option === "items") {
     const personContainer = document.createElement("div");
     personContainer.classList.add("person");
@@ -175,12 +209,9 @@ function totalAmountToCollect(arr, number) {
   for (let i = 0; i < arr.length; i++) {
     totalAmount += arr[i];
   }
-  console.log(arr);
   return totalAmount;
 }
 
-// const itemsArr = [];
-// totalAmountToCollect(itemsArr, formDataObj.number);
-
-// Maybe get an empty array and just add all the numbers to the array
-// At the end I can add them all together
+function removeFromTotal(total, number) {
+  return total - number;
+}
