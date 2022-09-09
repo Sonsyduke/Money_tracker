@@ -9,6 +9,8 @@ const personAmount = document.querySelector(".amount");
 const loansContainer = document.querySelector(".loans");
 const itemsContainer = document.querySelector(".items");
 const columnPerson = document.querySelector(".column");
+const totalAmountForLoans = document.querySelector(".amountLoans");
+const totalAmountForItems = document.querySelector(".amountItems");
 
 // Get the current date and display it in the nav
 const today = new Date();
@@ -25,7 +27,6 @@ function submittingForm(e) {
   const formData = new FormData(e.target);
 
   const formDataObj = Object.fromEntries(formData.entries());
-  console.log(formDataObj);
   addPerson(formDataObj);
   nameInput.value = "";
   amountInput.value = "";
@@ -66,6 +67,8 @@ function completePerson(item) {
   }
 }
 
+const loanNumbers = [];
+
 function addPerson(person) {
   if (person.option === "loans") {
     const personContainer = document.createElement("div");
@@ -82,7 +85,7 @@ function addPerson(person) {
     personContainer.append(personInfo);
 
     const personAmount = document.createElement("p");
-    personAmount.textContent = `R${loanMultiplier(person.number)}.00`;
+    personAmount.textContent = `R${loanMultiplier(person.number)}`;
     personAmount.classList.add("amount");
     personInfo.append(personAmount);
 
@@ -106,6 +109,12 @@ function addPerson(person) {
       "remove"
     );
     buttons.append(remove);
+    const totalNumber = totalAmountToCollect(
+      loanNumbers,
+      Number(loanMultiplier(person.number))
+    );
+    totalAmountForLoans.textContent = `R${totalNumber.toFixed(2)}`;
+    console.log(totalNumber);
   } else if (person.option === "items") {
     const personContainer = document.createElement("div");
     personContainer.classList.add("person");
@@ -121,7 +130,7 @@ function addPerson(person) {
     personContainer.append(personInfo);
 
     const personAmount = document.createElement("p");
-    personAmount.textContent = `R${person.number}.00`;
+    personAmount.textContent = `R${person.number}`;
     personAmount.classList.add("amount");
     personInfo.append(personAmount);
 
@@ -145,16 +154,26 @@ function addPerson(person) {
       "remove"
     );
     buttons.append(remove);
-
-    // console.log(totalAmountToCollect(person.number));
   }
 }
 
 function loanMultiplier(amount) {
   const totalAmount = amount * 1.5;
+  return totalAmount.toFixed(2);
+}
+
+function totalAmountToCollect(arr, number) {
+  arr.push(number);
+  let totalAmount = 0;
+  for (let i = 0; i < arr.length; i++) {
+    totalAmount += arr[i];
+  }
+  console.log(arr);
   return totalAmount;
 }
 
-// function totalAmountToCollect(person) {
-//   let newAmount = person;
-// }
+// const itemsArr = [];
+// totalAmountToCollect(itemsArr, formDataObj.number);
+
+// Maybe get an empty array and just add all the numbers to the array
+// At the end I can add them all together
