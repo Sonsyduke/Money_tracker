@@ -68,6 +68,7 @@ function completePerson(item) {
 }
 
 const loanNumbers = [];
+const itemNumbers = [];
 
 function addPerson(person) {
   if (person.option === "loans") {
@@ -130,7 +131,8 @@ function addPerson(person) {
     personContainer.append(personInfo);
 
     const personAmount = document.createElement("p");
-    personAmount.textContent = `R${person.number}`;
+    const amountPaid = Number(person.number).toFixed(2);
+    personAmount.textContent = `R${amountPaid}`;
     personAmount.classList.add("amount");
     personInfo.append(personAmount);
 
@@ -154,6 +156,11 @@ function addPerson(person) {
       "remove"
     );
     buttons.append(remove);
+    const totalNumber = totalAmountToCollect(
+      itemNumbers,
+      Number(person.number)
+    );
+    totalAmountForItems.textContent = `R${totalNumber.toFixed(2)}`;
   }
 }
 
