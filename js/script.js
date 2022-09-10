@@ -68,14 +68,11 @@ function completePerson(item) {
     const personContainer = personInfo.parentElement;
     personContainer.classList.toggle("complete");
     if (personContainer.classList.contains("complete")) {
+      console.log("Complete if statement");
       let amount = personInfo.childNodes[0].textContent;
       amount = Number(amount.substring(1, amount.indexOf(".")));
-      console.log(amount);
-      console.log(loanNumbers.indexOf(amount));
-      console.log(loanNumbers);
       let amountIndex = loanNumbers.indexOf(amount);
       loanNumbers.splice(amountIndex, 1);
-      console.log(loanNumbers);
 
       // Get the total amount
       // Convert to number
@@ -91,8 +88,13 @@ function completePerson(item) {
       } else {
         totalAmountForLoans.textContent = `R0.00`;
       }
-    } else {
-      console.log("No it does not");
+    } else if (loanNumbers.length === 0) {
+      // Get the number from the person div and add it back to the array
+      let amount = personInfo.childNodes[0].textContent;
+      amount = Number(amount.substring(1, amount.indexOf(".")));
+      const totalNumber = totalAmountToCollect(loanNumbers, Number(amount));
+      totalAmountForLoans.textContent = `R${totalNumber.toFixed(2)}`;
+      console.log("Its here now");
     }
   }
 }
