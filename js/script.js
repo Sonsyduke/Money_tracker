@@ -88,8 +88,14 @@ function completePerson(item) {
       } else {
         totalAmountForLoans.textContent = `R0.00`;
       }
-    } else if (loanNumbers.length === 0) {
+    } else if (loanNumbers.length > 0) {
       // Get the number from the person div and add it back to the array
+      let amount = personInfo.childNodes[0].textContent;
+      amount = Number(amount.substring(1, amount.indexOf(".")));
+      const totalNumber = totalAmountToCollect(loanNumbers, Number(amount));
+      totalAmountForLoans.textContent = `R${totalNumber.toFixed(2)}`;
+      console.log("Its in the second one now");
+    } else if (loanNumbers.length === 0) {
       let amount = personInfo.childNodes[0].textContent;
       amount = Number(amount.substring(1, amount.indexOf(".")));
       const totalNumber = totalAmountToCollect(loanNumbers, Number(amount));
